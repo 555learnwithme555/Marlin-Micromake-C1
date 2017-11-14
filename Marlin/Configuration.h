@@ -415,7 +415,7 @@
 // It also enables the M302 command to set the minimum extrusion temperature
 // or to allow moving the extruder regardless of the hotend temperature.
 // *** IT IS HIGHLY RECOMMENDED TO LEAVE THIS OPTION ENABLED! ***
-#define PREVENT_COLD_EXTRUSION
+//#define PREVENT_COLD_EXTRUSION // disabled for dry runs
 #define EXTRUDE_MINTEMP 170
 
 // This option prevents a single extrusion longer than EXTRUDE_MAXLENGTH.
@@ -527,9 +527,9 @@
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
 // choose your micro step per step configuration ( 16 factory settings )
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 100, 150 }       // 16  steps per unit for Micromake C1 - Factory Settings - ( MS1 : closed ; MS2 : closed on MAKEBOARD Mini)
+//#define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 100, 150 }       // 16  steps per unit for Micromake C1 - Factory Settings - ( MS1 : closed ; MS2 : closed on MAKEBOARD Mini)
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 200, 200, 200, 300 }       // 32  steps per unit for Micromake C1 - Custom  Settings - ( MS1 : closed ; MS2 : open   on MAKEBOARD Mini)
-//#define DEFAULT_AXIS_STEPS_PER_UNIT   { 400, 400, 400, 600 }       // 64  steps per unit for Micromake C1 - Custom  Settings - ( MS1 : open   ; MS2 : closed on MAKEBOARD Mini)
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 400, 400, 400, 600 }       // 64  steps per unit for Micromake C1 - Custom  Settings - ( MS1 : open   ; MS2 : closed on MAKEBOARD Mini)
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 800, 800, 800, 1200 }      // 128 steps per unit for Micromake C1 - Custom  Settings - ( MS1 : open   ; MS2 : open   on MAKEBOARD Mini)
 
 /**
@@ -545,7 +545,7 @@
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
- #define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 3000, 4000 }
+#define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 1000, 4000 }
 
 /**
  * Default Acceleration (change/s) change = mm/s
@@ -555,9 +555,9 @@
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          3000    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  3000    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   3000    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_ACCELERATION          1000    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION  1000    // E acceleration for retracts
+#define DEFAULT_TRAVEL_ACCELERATION   1000    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
  * Default Jerk (mm/s)
@@ -567,9 +567,9 @@
  * When changing speed and direction, if the difference is less than the
  * value set here, it may happen instantaneously.
  */
-#define DEFAULT_XJERK                 20.0
-#define DEFAULT_YJERK                 20.0
-#define DEFAULT_ZJERK                 20.0
+#define DEFAULT_XJERK                  5.0
+#define DEFAULT_YJERK                  5.0
+#define DEFAULT_ZJERK                  5.0
 #define DEFAULT_EJERK                  5.0
 
 //===========================================================================
@@ -968,7 +968,7 @@
   //===========================================================================
 
   #define MESH_INSET 10          // Mesh inset margin on print area
-  #define GRID_MAX_POINTS_X 3    // Don't use more than 7 points per axis, implementation limited.
+  #define GRID_MAX_POINTS_X 2    // Don't use more than 7 points per axis, implementation limited.
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   //#define MESH_G28_REST_ORIGIN // After homing all axes ('G28' or 'G28 XYZ') rest Z at Z_MIN_POS
@@ -1025,7 +1025,7 @@
 
 // Homing speeds (mm/m)
 #define HOMING_FEEDRATE_XY (50*60)
-#define HOMING_FEEDRATE_Z  (4*60)
+#define HOMING_FEEDRATE_Z  (15*60)
 
 //=============================================================================
 //============================= Additional Features ===========================
@@ -1092,7 +1092,7 @@
  *    P1  Raise the nozzle always to Z-park height.
  *    P2  Raise the nozzle by Z-park amount, limited to Z_MAX_POS.
  */
-#define NOZZLE_PARK_FEATURE
+//#define NOZZLE_PARK_FEATURE
 
 #if ENABLED(NOZZLE_PARK_FEATURE)
   // Specify a park position as { X, Y, Z }
@@ -1137,7 +1137,7 @@
  * Attention: EXPERIMENTAL. G-code arguments may change.
  *
  */
-#define NOZZLE_CLEAN_FEATURE
+//#define NOZZLE_CLEAN_FEATURE
 
 #if ENABLED(NOZZLE_CLEAN_FEATURE)
   // Default number of pattern repetitions
